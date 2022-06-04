@@ -2,6 +2,8 @@
 
 A React hook to help abstract user input.
 
+[![Mutation testing badge](https://img.shields.io/endpoint?style=flat&url=https%3A%2F%2Fbadge-api.stryker-mutator.io%2Fgithub.com%2FRoss-Esmond%2FuseAdapter%2Fmain)](https://dashboard.stryker-mutator.io/reports/github.com/Ross-Esmond/useAdapter/main)
+
 ## Install
 With npm.
 ```bash

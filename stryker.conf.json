@@ -5,9 +5,16 @@
   "reporters": [
     "html",
     "clear-text",
-    "progress"
+    "progress",
+    "dashboard"
   ],
   "mutate": [ "./useAdapter.js" ],
   "testRunner": "jest",
-  "coverageAnalysis": "perTest"
+  "coverageAnalysis": "perTest",
+  "dashboard": {
+    "project": "github.com/Ross-Esmond/useAdapter",
+    "version": "main",
+    "module": "useAdapter",
+    "reportType": "full"
+  }
 }
