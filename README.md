@@ -32,10 +32,8 @@ function PhoneNumberField({ value, onChange }) {
 
     return (
         <input type="tel"
-            // convert higher-level value into input format
-            // getInput runs the argument through the render function above
+            // getInput runs the argument through the display function above
             value={getInput(value)}
-            // parse the input value
             // setInput runs the argument through the parser function above
             onChange={e => onChange(setInput(e.target.value))}
         />
@@ -50,22 +48,23 @@ parse so that you may pass it directly to a callback or a conventional
 
 On the first render, `getInput` will simply run `value` through your custom
 display function and return the result. On subsequent renders, however,
-`getInput` will check if `value` is equal to the last result of the parser saved
-by `setInput`. Equality is checked by the `fast-deep-equal` package, so
-equivilant objects are considered equal. If the value is equal to the prior
-result of the parser, `getInput` will return the last `e.target.value`.
+`getInput` will check if `value` is equal to the result of parsing the current
+input. If the value is equal to parsing the input (which was stored by
+`setInput`), `getInput` will simply return the stored input. Equality is checked
+by the `fast-deep-equal` npm package, such that objects and arrays with
+equivilant structures and equal values are considered equal.
 
 This system allows `PhoneNumberField` to abstract the input value for any
-higher-level component without disallowing the user to type a phone number in
-whatever format they see fit. Normally, if a parent component only stores the
+higher-level component without disallowing the user from typing a phone number
+in whatever format they see fit. Normally, if a parent component only stores the
 digits of a phone number, the user would be incapable of typing formatting
-characters like `-` or spaces, as conventional React requires that the state be
-passed as the current input value,
+characters like `-` or spaces, as React idioms dictate that the state be passed
+as the current input value,
 ```JSX
-    <input type="tel" value={number} onChange={handleNumber} />
+    <input type="tel" value={number} onChange={ev => setNumber(ev.target.value)} />
 ```
 Conversely, `useAdapter` allows developers to parse values before hoisting them
-into React while still retaining the users precise input as they type.
+into React state while still retaining the users precise input as they type.
 
 Of course, you could skip passing the value back to the input, but then your
 React app would not be able to programmatically update the phone number if
@@ -73,4 +72,7 @@ necessary, as with a reset button.
 ```JSX
 <button onClick={() => onChange(previousNumber)}>Reset</button>
 ```
+In the case of a reset, `getInput` would detect that the `value` has changed,
+which would trigger the use of the display function to generate the new input
+value.
 
