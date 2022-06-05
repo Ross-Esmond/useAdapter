@@ -3,6 +3,7 @@
 A React hook to help abstract user input.
 
 [![Build status badge](https://img.shields.io/circleci/build/gh/Ross-Esmond/useAdapter)](https://app.circleci.com/pipelines/github/Ross-Esmond/useAdapter?branch=main&filter=all)
+[![npm](https://img.shields.io/npm/v/useadapter)](https://www.npmjs.com/package/useadapter)
 [![Mutation testing badge](https://img.shields.io/endpoint?style=flat&url=https%3A%2F%2Fbadge-api.stryker-mutator.io%2Fgithub.com%2FRoss-Esmond%2FuseAdapter%2Fmain)](https://dashboard.stryker-mutator.io/reports/github.com/Ross-Esmond/useAdapter/main)
 
 ## Install
