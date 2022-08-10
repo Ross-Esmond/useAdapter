@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import equal from 'fast-deep-equal/es6'
 
-export default function useInput(display, parse) {
+export default function useAdapter(display, parse) {
     const [low, setLow] = useState()
     const [parsed, setParsed] = useState({})
 
