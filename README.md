@@ -10,16 +10,16 @@ A React hook to help abstract user input.
 ## Install
 With npm.
 ```bash
-npm install useAdapter
+npm install useadapter
 ```
 With yarn.
 ```bash
-yarn add useAdapter
+yarn add useadapter
 ```
 
-### Usage
+## Usage
 ```JSX
-import useAdapter from 'useAdapter'
+import useAdapter from 'useadapter'
 function PhoneNumberField({ value, onChange }) {
     const [getInput, setInput] = useAdapter(
         // display, turn 8175553356 into 817-555-3356
@@ -66,7 +66,7 @@ digits of a phone number, the user would be incapable of typing formatting
 characters like `-` or spaces, as React idioms dictate that the state be passed
 as the current input value,
 ```JSX
-    <input type="tel" value={number} onChange={ev => setNumber(ev.target.value)} />
+<input type="tel" value={number} onChange={ev => setNumber(ev.target.value)} />
 ```
 Conversely, `useAdapter` allows developers to parse values before hoisting them
 into React state while still retaining the users precise input as they type.
