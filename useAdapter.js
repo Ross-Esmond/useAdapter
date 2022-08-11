@@ -3,7 +3,8 @@ import equal from 'fast-deep-equal/es6'
 
 export default function useAdapter(display, parse) {
     const [low, setLow] = useState()
-    const [parsed, setParsed] = useState({})
+    // NaN was used as it is not equal to anything, including itself
+    const [parsed, setParsed] = useState(Number.NaN)
 
     return [
         high => equal(high, parsed) ? low : display(high),

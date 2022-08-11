@@ -102,3 +102,36 @@ test('runs display on first render even when upper-level value is undefined', ()
     expect(screen.getByLabelText('Input').value).toBe('5')
 })
 
+function NumberPlaceholderObj() {
+    const [object, setObject] = useState({})
+    const [getFiveOnObj, setFiveOnObj] = useAdapter(obj => typeof obj === 'object' ? 5 : 0, number => number)
+
+    return (
+        <div>
+            <Number value={getFiveOnObj(object)} onChange={number => setObject(setFiveOnObj(number))} />
+        </div>
+    )
+}
+
+test('runs display on first render even when upper-level value is an object', () => {
+    render(<NumberPlaceholderObj />)
+
+    expect(screen.getByLabelText('Input').value).toBe('5')
+})
+
+function NumberPlaceholderNaN() {
+    const [nan, setNan] = useState(Number.NaN)
+    const [getFiveOnNan, setFiveOnNan] = useAdapter(nan => isNaN(nan) ? 5 : 0, number => number)
+
+    return (
+        <div>
+            <Number value={getFiveOnNan(nan)} onChange={number => setNan(setFiveOnNan(number))} />
+        </div>
+    )
+}
+
+test('runs display on first render even when upper-level value is NaN', () => {
+    render(<NumberPlaceholderNaN />)
+
+    expect(screen.getByLabelText('Input').value).toBe('5')
+})
